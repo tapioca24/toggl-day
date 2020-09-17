@@ -14,6 +14,7 @@
     "type": "git",
     "url": "git@github.com:tapioca24/toggl-day.git"
   },
+  "homepage": "https://github.com/tapioca24/toggl-day",
   "keywords": [
     "toggl"
   ],
