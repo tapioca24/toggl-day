@@ -14,7 +14,9 @@
     "type": "git",
     "url": "git@github.com:tapioca24/toggl-day.git"
   },
-  "keywords": [],
+  "keywords": [
+    "toggl"
+  ],
   "author": "",
   "license": "MIT",
   "dependencies": {
