@@ -2,7 +2,7 @@
   "name": "toggl-day",
   "version": "0.0.1",
   "description": "toggl-day is a CLI tool to output today's Toggl Track summary report.",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
