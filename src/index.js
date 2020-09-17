@@ -5,7 +5,7 @@ const getSummaryReport = require('./getSummaryReport')
 const printSummaryReport = require('./printSummaryReport')
 
 const SAVE_TOKEN_USAGE = `Usage:
-$toggl-today --save-token <your token>
+$toggl-day --save-token <your token>
 `
 
 const today = dayjs().format('YYYY-MM-DD')

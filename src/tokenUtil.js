@@ -2,7 +2,7 @@ const fs = require('fs')
 const util = require('util')
 
 const USER_HOME_DIR = process.env['HOME']
-const CONFIG_FILE_PATH = `${USER_HOME_DIR}/.toggl-today`
+const CONFIG_FILE_PATH = `${USER_HOME_DIR}/.toggl-day`
 
 const saveToken = async token => {
   const writeFile = util.promisify(fs.writeFile)
