@@ -17,7 +17,7 @@
   "keywords": [
     "toggl"
   ],
-  "author": "",
+  "author": "tapioca24",
   "license": "MIT",
   "dependencies": {
     "chalk": "^4.1.0",
