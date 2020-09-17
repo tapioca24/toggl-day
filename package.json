@@ -6,6 +6,10 @@
   "scripts": {
     "start": "node src/index.js"
   },
+  "engines": {
+    "node": ">=12",
+    "npm": ">=6"
+  },
   "repository": {
     "type": "git",
     "url": "git@github.com:tapioca24/toggl-day.git"
