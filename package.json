@@ -1,6 +1,6 @@
 {
   "name": "toggl-day",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "toggl-day is a CLI tool to output today's Toggl Track summary report.",
   "main": "src/index.js",
   "bin": {
