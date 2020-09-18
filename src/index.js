@@ -7,27 +7,34 @@ const getSummaryReport = require('./getSummaryReport')
 const printSummaryReport = require('./printSummaryReport')
 
 const SAVE_TOKEN_USAGE = `Usage:
-$toggl-day --save-token <your token>
+\t$toggl-day --save-token [token]
 `
 
 const today = dayjs().format('YYYY-MM-DD')
 
 const argv = yargs
+  .usage("Output today's Toggl Track summary report.")
   .option('save-token', {
-    description: 'save provided token and exit',
+    description: 'Save provided token and exit',
     type: 'string'
   })
   .option('date', {
     alias: 'd',
-    description: 'date to output summary report',
-    type: 'string',
-    default: today
+    description: 'Date to output summary report (e.g. 2020-12-31)',
+    type: 'string'
   })
   .option('no-colors', {
-    description: 'disable colors',
+    description: 'Disable colors',
     type: 'boolean'
   })
+  .alias('v', 'version')
+  .alias('h', 'help')
+  .locale('en')
   .argv
+
+const options = {
+  date: argv.date || today
+}
 
 const main = async () => {
   if (argv.saveToken != null) {
@@ -43,7 +50,7 @@ const main = async () => {
     const token = await tokenUtil.load()
     const report = await getSummaryReport({
       apiToken: token,
-      dateStr: argv.date
+      dateStr: options.date
     })
 
     const dateStr = argv.date === today ? 'today' : `on ${argv.date}`
