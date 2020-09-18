@@ -33,7 +33,7 @@ const main = async () => {
   if (argv.saveToken != null) {
     if (argv.saveToken === '') {
       console.log(SAVE_TOKEN_USAGE)
-      return
+      process.exit(1)
     }
     tokenUtil.save(argv.saveToken)
     return
@@ -51,13 +51,11 @@ const main = async () => {
   } catch (err) {
     if (err.code === 'ENOENT') {
       console.log(SAVE_TOKEN_USAGE)
-      return
+    } else {
+      console.error(err.message)
     }
-    throw err
+    process.exit(1)
   }
 }
 
 main()
-.catch(err => {
-  console.error(err.message)
-})
