@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const yargs = require('yargs')
 const dayjs = require('dayjs')
 const tokenUtil = require('./tokenUtil')
