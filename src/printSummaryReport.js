@@ -41,11 +41,11 @@ const printTask = item => {
   log(text)
 }
 
-const printSummaryReport = (report, date) => {
+const printSummaryReport = (report, dateStr) => {
   if (report.data.length === 0) {
     const today = dayjs().format('YYYY-MM-DD')
-    const dateStr = date === today ? 'today' : date
-    console.log(`There are no tasks completed ${dateStr} yet.`)
+    const date = dateStr === today ? 'today' : dateStr
+    console.log(`There are no tasks completed ${date} yet.`)
     return
   }
 
