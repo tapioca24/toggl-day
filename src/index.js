@@ -10,17 +10,16 @@ const SAVE_TOKEN_USAGE = `Usage:
 \t$toggl-day --save-token [token]
 `
 
-const today = dayjs().format('YYYY-MM-DD')
-
 const argv = yargs
-  .usage("Output today's Toggl Track summary report.")
+  .scriptName('toggl-day')
+  .usage('Show toggl track summary report for the day.')
   .option('save-token', {
     description: 'Save provided token and exit',
     type: 'string'
   })
   .option('date', {
     alias: 'd',
-    description: 'Date to output summary report (e.g. 2020-12-31)',
+    description: 'Specify the date of the report you want to show\n(format: YYYY-MM-DD)',
     type: 'string'
   })
   .option('no-colors', {
@@ -29,9 +28,15 @@ const argv = yargs
   })
   .alias('v', 'version')
   .alias('h', 'help')
+  .example([
+    ['$0 --save-token fc08b73f24644419d', 'Save provided token'],
+    ['$0', 'Show the report for today'],
+    ['$0 -d 2020-12-01', 'Show the report for Dec. 1, 2020']
+  ])
   .locale('en')
   .argv
 
+const today = dayjs().format('YYYY-MM-DD')
 const options = {
   date: argv.date || today
 }
@@ -53,8 +58,7 @@ const main = async () => {
       dateStr: options.date
     })
 
-    const dateStr = argv.date === today ? 'today' : `on ${argv.date}`
-    printSummaryReport(report, dateStr)
+    printSummaryReport(report, options.date)
   } catch (err) {
     if (err.code === 'ENOENT') {
       console.log(SAVE_TOKEN_USAGE)

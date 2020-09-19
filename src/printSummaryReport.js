@@ -1,4 +1,5 @@
 const chalk = require('chalk')
+const dayjs = require('dayjs')
 const colorUtil = require('./colorUtil')
 const log = console.log
 
@@ -40,9 +41,11 @@ const printTask = item => {
   log(text)
 }
 
-const printSummaryReport = (report, dateStr) => {
+const printSummaryReport = (report, date) => {
   if (report.data.length === 0) {
-    console.log(`There are no tasks completed ${dateStr} yet`)
+    const today = dayjs().format('YYYY-MM-DD')
+    const dateStr = date === today ? 'today' : date
+    console.log(`There are no tasks completed ${dateStr} yet.`)
     return
   }
 
