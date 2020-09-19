@@ -1,41 +1,14 @@
 #!/usr/bin/env node
 
-const yargs = require('yargs')
 const dayjs = require('dayjs')
 const tokenUtil = require('./tokenUtil')
+const parseArguments = require('./parseArguments')
 const getSummaryReport = require('./getSummaryReport')
 const printSummaryReport = require('./printSummaryReport')
 
-const SAVE_TOKEN_USAGE = `Usage:
-\t$toggl-day --save-token [token]
-`
+const SAVE_TOKEN_USAGE = 'Usage:\n\t$toggl-day --save-token [token]'
 
-const argv = yargs
-  .scriptName('toggl-day')
-  .usage('Show toggl track summary report for the day.')
-  .option('save-token', {
-    description: 'Save provided token and exit',
-    type: 'string'
-  })
-  .option('date', {
-    alias: 'd',
-    description: 'Specify the date of the report you want to show\n(format: YYYY-MM-DD)',
-    type: 'string'
-  })
-  .option('no-colors', {
-    description: 'Disable colors',
-    type: 'boolean'
-  })
-  .alias('v', 'version')
-  .alias('h', 'help')
-  .example([
-    ['$0 --save-token fc08b73f24644419d', 'Save provided token'],
-    ['$0', 'Show the report for today'],
-    ['$0 -d 2020-12-01', 'Show the report for Dec. 1, 2020']
-  ])
-  .locale('en')
-  .argv
-
+const argv = parseArguments()
 const today = dayjs().format('YYYY-MM-DD')
 const options = {
   date: argv.date || today
