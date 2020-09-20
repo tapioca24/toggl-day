@@ -9,6 +9,8 @@ npm install -g toggl-day
 
 ## Usage
 
+![Demo](./gifs/demo.gif)
+
 ```
 $ toggl-day --help
 Show toggl track summary report for the day.
