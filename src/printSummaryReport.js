@@ -1,7 +1,6 @@
 const chalk = require('chalk')
-const colorUtil = require('./colorUtil')
-const datetimeUtil = require('./datetimeUtil')
-const log = console.log
+const colorUtil = require('./utils/colorUtil')
+const datetimeUtil = require('./utils/datetimeUtil')
 
 // print project
 const printProject = data => {
@@ -12,7 +11,7 @@ const printProject = data => {
   const brightness = colorUtil.hexColor2Brightness(hexColor)
   const fontColor = brightness < 100 ? chalk.white : chalk.black
   const text = point + fontColor.bgHex(hexColor)(`${project}`)
-  log(text)
+  console.log(text)
 }
 
 // print task
@@ -23,7 +22,7 @@ const printTask = item => {
 
   const point = '  - '
   const text = `${point}${task} ` + chalk.gray(`(${timeStr})`)
-  log(text)
+  console.log(text)
 }
 
 const printSummaryReport = (report, dateStr) => {

@@ -1,5 +1,5 @@
-const tokenUtil = require("./tokenUtil")
-const datetimeUtil = require("./datetimeUtil")
+const tokenUtil = require("./utils/tokenUtil")
+const datetimeUtil = require("./utils/datetimeUtil")
 const getSummaryReport = require("./getSummaryReport")
 const printSummaryReport = require("./printSummaryReport")
 
