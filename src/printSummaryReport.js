@@ -3,14 +3,16 @@ const colorUtil = require('./utils/colorUtil')
 const datetimeUtil = require('./utils/datetimeUtil')
 
 // print project
-const printProject = data => {
+const printProject = (data, totalTime) => {
   const hexColor = data.title.hex_color
   const project = data.title.project
+
+  const percentage = Math.round(data.time / totalTime * 100)
 
   const point = '- '
   const brightness = colorUtil.hexColor2Brightness(hexColor)
   const fontColor = brightness < 100 ? chalk.white : chalk.black
-  const text = point + fontColor.bgHex(hexColor)(`${project}`)
+  const text = point + fontColor.bgHex(hexColor)(`${project}`) + ' ' + chalk.gray(`(${percentage}%)`)
   console.log(text)
 }
 
@@ -34,7 +36,7 @@ const printSummaryReport = (report, dateStr) => {
   }
 
   for (const data of report.data) {
-    printProject(data)
+    printProject(data, report.total_grand)
     for (const item of data.items) {
       printTask(item)
     }
