@@ -1,4 +1,5 @@
 const tokenUtil = require("./tokenUtil")
+const datetimeUtil = require("./datetimeUtil")
 const getSummaryReport = require("./getSummaryReport")
 const printSummaryReport = require("./printSummaryReport")
 
@@ -15,6 +16,10 @@ const main = async ({ token, dateStr }) => {
       })
     console.log(`Saved a token in \`${filePath}\``)
     return
+  }
+
+  if (!datetimeUtil.varidateDateStr(dateStr)) {
+    throw new Error(`'${dateStr}' is not valid date 'YYYY-MM-DD'`)
   }
 
   // load token

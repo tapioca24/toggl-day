@@ -1,3 +1,8 @@
+const varidateDateStr = dateStr => {
+  const regex = /^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/
+  return regex.test(dateStr)
+}
+
 // convert Date object to date string (e.g. new Date() => '2020-09-20')
 const date2dateStr = date => {
   const year = date.getFullYear()
@@ -29,6 +34,7 @@ const msec2timeStr = msec => {
 }
 
 module.exports = {
+  varidateDateStr,
   date2dateStr,
   msec2timeStr
 }
