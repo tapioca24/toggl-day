@@ -18,6 +18,7 @@ const main = async ({ token, dateStr }) => {
     return
   }
 
+  // varidate date string
   if (!datetimeUtil.varidateDateStr(dateStr)) {
     throw new Error(`'${dateStr}' is not valid date 'YYYY-MM-DD'`)
   }
