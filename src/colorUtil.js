@@ -1,7 +1,7 @@
 const hexColor2Brightness = hexColor => {
   let hex = hexColor.replace(/^\s*#|\s*$/g, '')
 
-  // convert 3 char codes => 6, e.g. 'E0F' => 'EE00FF'
+  // convert 3 char codes to 6 char codes (e.g. 'E0F' => 'EE00FF')
   if (hex.length === 3) {
     hex = hex.replace(/(.)/g, '$1$1')
   }

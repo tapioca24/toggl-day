@@ -1,25 +1,9 @@
 const chalk = require('chalk')
-const dayjs = require('dayjs')
 const colorUtil = require('./colorUtil')
+const datetimeUtil = require('./datetimeUtil')
 const log = console.log
 
-const formatTime = timeMs => {
-  const hour = Math.floor(timeMs / 3600000)
-  const min = Math.floor((timeMs % 3600000) / 60000)
-  const sec = Math.floor((timeMs % 60000) / 1000)
-
-  const hourStr = hour.toString()
-  const minStr = min.toString().padStart(2, '0')
-  const secStr = sec.toString().padStart(2, '0')
-
-  let formattedStr = `${minStr}:${secStr}`
-  if (hour > 0) {
-    formattedStr = `${hourStr}:${formattedStr}`
-  }
-
-  return formattedStr
-}
-
+// print project
 const printProject = data => {
   const hexColor = data.title.hex_color
   const project = data.title.project
@@ -31,19 +15,20 @@ const printProject = data => {
   log(text)
 }
 
+// print task
 const printTask = item => {
   const timeMs = item.time
-  const formattedTime = formatTime(timeMs)
+  const timeStr = datetimeUtil.msec2timeStr(timeMs)
   const task = item.title.time_entry
 
   const point = '  - '
-  const text = `${point}${task} ` + chalk.gray(`(${formattedTime})`)
+  const text = `${point}${task} ` + chalk.gray(`(${timeStr})`)
   log(text)
 }
 
 const printSummaryReport = (report, dateStr) => {
   if (report.data.length === 0) {
-    const today = dayjs().format('YYYY-MM-DD')
+    const today = datetimeUtil.date2dateStr(new Date())
     const date = dateStr === today ? 'today' : dateStr
     console.log(`There are no tasks completed ${date} yet.`)
     return

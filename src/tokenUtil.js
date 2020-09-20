@@ -7,6 +7,7 @@ const CONFIG_FILE_PATH = `${USER_HOME_DIR}/.toggl-day`
 const saveToken = async token => {
   const writeFile = util.promisify(fs.writeFile)
   await writeFile(CONFIG_FILE_PATH, token)
+  return CONFIG_FILE_PATH
 }
 
 const loadToken = async () => {
